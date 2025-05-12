@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('excursions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained('excursion_categories');
+            $table->foreignId('guid_id')->constrained('guides');
             $table->string('title');
             $table->string('slug');
             $table->string('preview_image');
