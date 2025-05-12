@@ -23,7 +23,7 @@
                     <img src="{{ asset('storage/' . $excursion->preview_image) }}" alt="" class="mb-2 w-full h-48 object-cover">
                     <h2 class="text-lg font-semibold">{{ $excursion->title }}</h2>
                     <p class="text-sm text-gray-600 mb-2">{{ $excursion->preview_text }}</p>
-                    <a href="{{ route('excursions.show', $excursion->slug) }}" class="text-blue-500">Подробнее</a>
+{{--                    <a href="{{ route('excursions.show', $excursion->slug) }}" class="text-blue-500">Подробнее</a>--}}
                 </div>
             @endforeach
         </div>
