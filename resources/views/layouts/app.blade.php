@@ -13,6 +13,9 @@
         <h1 class="text-xl font-bold text-blue-600">
             <a href="{{ route('home') }}">TripFox</a>
         </h1>
+        @hasSection('search')
+            @yield('search')
+        @endif
         <nav>
             <a href="{{ route('home') }}" class="text-gray-700 hover:text-blue-500 px-2">Главная</a>
         </nav>

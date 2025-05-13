@@ -1,21 +1,12 @@
 @extends('layouts.app')
 
+@section('search')
+    @include('partials.search', ['categories' => $categories])
+@endsection
+
 @section('content')
     <div class="container py-4">
         <h1 class="text-2xl font-bold mb-4">Экскурсии</h1>
-
-        <form method="GET" class="mb-4">
-            <input type="text" name="q" value="{{ request('q') }}" placeholder="Поиск..." class="border px-2 py-1 mr-2">
-            <select name="category" class="border px-2 py-1 mr-2">
-                <option value="">Все категории</option>
-                @foreach($categories as $category)
-                    <option value="{{ $category->slug }}" @selected(request('category') === $category->slug)>
-                        {{ $category->title }}
-                    </option>
-                @endforeach
-            </select>
-            <button class="bg-blue-500 text-white px-4 py-1">Найти</button>
-        </form>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             @foreach($excursions as $excursion)
