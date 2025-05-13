@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Excursion extends Model
 {
     use SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
         'category_id',
@@ -37,6 +39,6 @@ class Excursion extends Model
 
     public function guide(): BelongsTo
     {
-        return $this->belongsTo(Guid::class, 'guid_id');
+        return $this->belongsTo(Guide::class, 'guid_id');
     }
 }
