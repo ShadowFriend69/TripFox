@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         Guide::factory(10)->create()->each(function ($guide) {
             // У каждого гида 4 экскурсии
             Excursion::factory(4)->create([
-                'guid_id' => $guide->id
+                'guide_id' => $guide->id
             ]);
         });
     }

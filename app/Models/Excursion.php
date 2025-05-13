@@ -16,6 +16,7 @@ class Excursion extends Model
 
     protected $fillable = [
         'category_id',
+        'guide_id',
         'title',
         'slug',
         'preview_image',
@@ -39,6 +40,6 @@ class Excursion extends Model
 
     public function guide(): BelongsTo
     {
-        return $this->belongsTo(Guide::class, 'guid_id');
+        return $this->belongsTo(Guide::class, 'guide_id');
     }
 }

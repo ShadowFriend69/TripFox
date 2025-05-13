@@ -18,7 +18,7 @@ class ExcursionFactory extends Factory
         $title = fake()->sentence(3);
         return [
             'category_id' => ExcursionCategory::inRandomOrder()->first()->id,
-            'guid_id' => Guide::inRandomOrder()->first()->id,
+            'guide_id' => Guide::inRandomOrder()->first()->id,
             'title' => $title,
             'slug' => Str::slug($title) . '-' . rand(100, 999),
             'preview_image' => 'excursions/default_preview.jpg',
