@@ -7,17 +7,21 @@ use App\Filament\Resources\ExcursionResource\RelationManagers;
 use App\Models\Excursion;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class ExcursionResource extends Resource
 {
     protected static ?string $model = Excursion::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-globe-europe-africa';
     protected static ?string $navigationLabel = 'Экскурсии';
     protected static ?string $navigationGroup = 'Экскурсии';
 
@@ -29,14 +33,18 @@ class ExcursionResource extends Resource
                     ->label('Категория')
                     ->relationship('category', 'title')
                     ->required(),
-                Forms\Components\TextInput::make('guid_id')
+                Forms\Components\Select::make('guide_id')
                     ->label('Гид')
-                    ->required()
-                    ->numeric(),
+                    ->relationship('guide', 'id')
+                    ->required(),
                 Forms\Components\TextInput::make('title')
                     ->label('Название')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->live()
+                    ->afterStateUpdated(function (Set $set, $state) {
+                        $set('slug', Str::slug($state));
+                    }),
                 Forms\Components\TextInput::make('slug')
                     ->label('Код')
                     ->required()
@@ -53,11 +61,11 @@ class ExcursionResource extends Resource
                     ->label('Текст для превью')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\Textarea::make('detail_text')
+                TinyEditor::make('detail_text')
                     ->label('Основной текст')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('tags')
+                Forms\Components\TagsInput::make('tags')
                     ->label('Теги'),
                 Forms\Components\Toggle::make('isActive')
                     ->label('Активна')
@@ -65,6 +73,7 @@ class ExcursionResource extends Resource
                     ->required(),
                 Forms\Components\DateTimePicker::make('published_at')
                     ->label('Дата публикации')
+                    ->default(Carbon::now())
                     ->required(),
             ]);
     }
@@ -77,7 +86,7 @@ class ExcursionResource extends Resource
                     ->label('Категория')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('guid_id')
+                Tables\Columns\TextColumn::make('guide_id')
                     ->label('Гид')
                     ->numeric()
                     ->sortable(),
