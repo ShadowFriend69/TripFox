@@ -30,4 +30,9 @@ class ExcursionController extends Controller
 
         return view('excursions.index', compact('excursions', 'categories'));
     }
+
+    public function show(Excursion $excursion)
+    {
+        return view('excursions.show', compact('excursion'));
+    }
 }
