@@ -17,6 +17,7 @@ class Excursion extends Model
     protected $fillable = [
         'category_id',
         'guide_id',
+        'price',
         'title',
         'slug',
         'preview_image',
@@ -24,12 +25,19 @@ class Excursion extends Model
         'preview_text',
         'detail_text',
         'tags',
+        'duration_minutes',
+        'locations',
+        'language',
+        'max_people',
+        'transport',
         'isActive',
         'published_at',
     ];
 
     protected $casts = [
         'tags' => 'array',
+        'locations' => 'array',
+        'language' => 'array',
         'published_at' => 'datetime',
     ];
 

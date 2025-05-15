@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\ExcursionCategory;
-use App\Models\Guide;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
