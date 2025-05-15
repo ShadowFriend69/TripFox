@@ -17,7 +17,7 @@
                 <p class="text-gray-700 mb-4">{{ $excursion->detail_text }}</p>
 
                 <div class="mb-4">
-                    <span class="font-semibold">Маршрут:</span> {{ implode(' ▷ ', $excursion->locations) }}
+                    <span class="font-semibold">Маршрут:</span> {{ implode(', ', $excursion->locations) }}
                 </div>
 
                 <div class="mb-4">

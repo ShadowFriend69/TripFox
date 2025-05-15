@@ -25,7 +25,7 @@ class ExcursionController extends Controller
             $query->where('title', 'like', '%' . $request->q . '%');
         }
 
-        $excursions = $query->orderByDesc('published_at')->paginate(10);
+        $excursions = $query->orderByDesc('published_at')->paginate(9);
         $categories = ExcursionCategory::where('isActive', true)->get();
 
         return view('excursions.index', compact('excursions', 'categories'));
