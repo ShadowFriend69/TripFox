@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\UserRole;
 use App\Filament\Resources\ExcursionResource\Pages;
 use App\Filament\Resources\ExcursionResource\RelationManagers;
 use App\Models\Excursion;
@@ -35,8 +36,11 @@ class ExcursionResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('guide_id')
                     ->label('Гид')
-                    ->relationship('guide', 'name')
-                    ->searchable()
+                    ->relationship(
+                        'guide',
+                        'name',
+                        modifyQueryUsing: fn ($query) => $query->where('role', UserRole::GUIDE->value)
+                    )
                     ->required(),
                 Forms\Components\TextInput::make('price')
                     ->label('Цена')
