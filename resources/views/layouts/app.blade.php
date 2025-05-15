@@ -18,6 +18,7 @@
         @endif
         <nav>
             <a href="{{ route('home') }}" class="text-gray-700 hover:text-blue-500 px-2">Главная</a>
+            <a href="{{ route('about') }}" class="text-gray-700 hover:text-blue-500 px-2">О нас</a>
             <a href="{{ route('filament.admin.auth.login') }}" class="ml-4 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
                 Войти
             </a>
