@@ -52,10 +52,12 @@ class ExcursionResource extends Resource
                 Forms\Components\FileUpload::make('preview_image')
                     ->label('Изображение для превью')
                     ->image()
+                    ->directory('excursions')
                     ->required(),
                 Forms\Components\FileUpload::make('detail_image')
                     ->label('Основное изображение')
                     ->image()
+                    ->directory('excursions')
                     ->required(),
                 Forms\Components\Textarea::make('preview_text')
                     ->label('Текст для превью')
