@@ -35,8 +35,13 @@ class ExcursionResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('guide_id')
                     ->label('Гид')
-                    ->relationship('guide', 'id')
+                    ->relationship('guide', 'name')
+                    ->searchable()
                     ->required(),
+                Forms\Components\TextInput::make('price')
+                    ->label('Цена')
+                    ->required()
+                    ->numeric(),
                 Forms\Components\TextInput::make('title')
                     ->label('Название')
                     ->required()
@@ -48,7 +53,7 @@ class ExcursionResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->label('Код')
                     ->required()
-                    ->maxLength(255),
+                    ->readOnly(),
                 Forms\Components\FileUpload::make('preview_image')
                     ->label('Изображение для превью')
                     ->image()
@@ -69,6 +74,19 @@ class ExcursionResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\TagsInput::make('tags')
                     ->label('Теги'),
+                Forms\Components\TextInput::make('duration_minutes')
+                    ->label('Длительность (минуты)')
+                    ->numeric(),
+                Forms\Components\TagsInput::make('locations')
+                    ->label('Места'),
+                Forms\Components\TagsInput::make('languages')
+                    ->label('Языки')
+                    ->default('Русский'),
+                Forms\Components\TextInput::make('max_people')
+                    ->label('Максимальное количество людей')
+                    ->numeric(),
+                Forms\Components\TextInput::make('transport')
+                    ->label('Транспорт'),
                 Forms\Components\Toggle::make('isActive')
                     ->label('Активна')
                     ->default(true)
@@ -92,6 +110,9 @@ class ExcursionResource extends Resource
                     ->label('Гид')
                     ->numeric()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('price')
+                    ->label('Цена')
+                    ->numeric(),
                 Tables\Columns\TextColumn::make('title')
                     ->label('Название')
                     ->searchable(),
@@ -103,6 +124,18 @@ class ExcursionResource extends Resource
                     ->label('Изображение для превью'),
                 Tables\Columns\ImageColumn::make('detail_image')
                     ->label('Основное изображение'),
+                Tables\Columns\TextColumn::make('duration_minutes')
+                    ->label('Длительность (минуты)')
+                    ->numeric(),
+                Tables\Columns\TextColumn::make('locations')
+                    ->label('Места'),
+                Tables\Columns\TextColumn::make('languages')
+                    ->label('Языки'),
+                Tables\Columns\TextColumn::make('max_people')
+                    ->label('Максимальное количество людей')
+                    ->numeric(),
+                Tables\Columns\TextColumn::make('transport')
+                    ->label('Транспорт'),
                 Tables\Columns\IconColumn::make('isActive')
                     ->label('Активна')
                     ->boolean(),
