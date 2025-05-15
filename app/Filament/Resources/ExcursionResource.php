@@ -83,9 +83,8 @@ class ExcursionResource extends Resource
                     ->numeric(),
                 Forms\Components\TagsInput::make('locations')
                     ->label('Места'),
-                Forms\Components\TagsInput::make('languages')
-                    ->label('Языки')
-                    ->default('Русский'),
+                Forms\Components\TagsInput::make('language')
+                    ->label('Языки'),
                 Forms\Components\TextInput::make('max_people')
                     ->label('Максимальное количество людей')
                     ->numeric(),
@@ -133,7 +132,7 @@ class ExcursionResource extends Resource
                     ->numeric(),
                 Tables\Columns\TextColumn::make('locations')
                     ->label('Места'),
-                Tables\Columns\TextColumn::make('languages')
+                Tables\Columns\TextColumn::make('language')
                     ->label('Языки'),
                 Tables\Columns\TextColumn::make('max_people')
                     ->label('Максимальное количество людей')
@@ -163,6 +162,7 @@ class ExcursionResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
             ])
