@@ -9,12 +9,12 @@
     <div class="container py-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             {{-- Изображение --}}
-            <img src="{{ asset('storage/app/public/' . $excursion->preview_image) }}" alt="{{ $excursion->title }}" class="w-full h-96 object-cover rounded shadow">
+            <img src="{{ asset('storage/' . $excursion->detail_image) }}" alt="{{ $excursion->title }}" class="w-full h-96 object-cover rounded shadow">
 
             {{-- Информация об экскурсии --}}
             <div>
                 <h1 class="text-3xl font-bold mb-4">{{ $excursion->title }}</h1>
-                <p class="text-gray-700 mb-4">{{ $excursion->description }}</p>
+                <p class="text-gray-700 mb-4">{{ $excursion->detail_text }}</p>
 
                 <div class="mb-4">
                     <span class="font-semibold">Маршрут:</span> {{ $excursion->route }}
@@ -44,10 +44,10 @@
         </div>
 
         {{-- Раздел с комментариями / отзывами --}}
-        <div class="mt-10">
-            <h2 class="text-xl font-semibold mb-4">Отзывы клиентов</h2>
+{{--        <div class="mt-10">--}}
+{{--            <h2 class="text-xl font-semibold mb-4">Отзывы клиентов</h2>--}}
 
-            {{-- Пример вывода отзывов --}}
+{{--            --}}{{-- Пример вывода отзывов --}}
 {{--            @forelse ($excursion->comments as $comment)--}}
 {{--                <div class="border-b py-4">--}}
 {{--                    <div class="text-sm text-gray-600 mb-1">--}}
@@ -58,6 +58,6 @@
 {{--            @empty--}}
 {{--                <p class="text-gray-500">Пока нет отзывов.</p>--}}
 {{--            @endforelse--}}
-        </div>
+{{--        </div>--}}
     </div>
 @endsection
