@@ -14,7 +14,7 @@
             {{-- Информация об экскурсии --}}
             <div>
                 <h1 class="text-3xl font-bold mb-4">{{ $excursion->title }}</h1>
-                <p class="text-gray-700 mb-4">{{ $excursion->detail_text }}</p>
+                <div class="text-gray-700 mb-4 prose max-w-none">{!! $excursion->detail_text !!}</div>
 
                 <div class="mb-4">
                     <span class="font-semibold">Маршрут:</span> {{ implode(', ', $excursion->locations) }}
