@@ -23,12 +23,16 @@ class DatabaseSeeder extends Seeder
 //            'email' => 'test@example.com',
 //        ]);
 
-        // Категории
         ExcursionCategory::factory(5)->create();
 
-        // Гиды с пользователями
-        Guide::factory(10)->create()->each(function ($guide) {
-            // У каждого гида 4 экскурсии
+        // Гиды
+        $guides = User::factory(10)->guide()->create();
+
+        // Клиенты
+        User::factory(5)->client()->create();
+
+        // Экскурсии
+        $guides->each(function ($guide) {
             Excursion::factory(4)->create([
                 'guide_id' => $guide->id
             ]);

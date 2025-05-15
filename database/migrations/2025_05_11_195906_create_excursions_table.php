@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('excursions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained('excursion_categories');
-            $table->foreignId('guide_id')->constrained('guides');
+            $table->foreignId('guide_id')->constrained('users');
             $table->decimal('price', 8, 2)->default(0);
             $table->string('title');
             $table->string('slug');

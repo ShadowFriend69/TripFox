@@ -40,6 +40,6 @@ class Excursion extends Model
 
     public function guide(): BelongsTo
     {
-        return $this->belongsTo(Guide::class, 'guide_id');
+        return $this->belongsTo(User::class, 'guide_id');
     }
 }
