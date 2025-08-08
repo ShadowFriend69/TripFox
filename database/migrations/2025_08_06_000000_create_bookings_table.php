@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('client_id')->constrained('users')->cascadeOnDelete();
             $table->dateTime('date'); // Дата проведения
             $table->integer('people_count')->default(1); // Кол-во участников
-            $table->enum('status', ['pending', 'paid', 'cancelled'])->default('pending');
+            $table->enum('status', ['pending', 'confirmed', 'paid', 'cancelled'])->default('pending');
             $table->timestamps();
             $table->softDeletes();
         });
