@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\BookingStatus;
 use App\Enums\UserRole;
 use App\Filament\Resources\BookingResource\Pages;
 use App\Models\Booking;
@@ -51,11 +52,7 @@ class BookingResource extends Resource
 
                 Forms\Components\Select::make('status')
                     ->label('Статус')
-                    ->options([
-                        'pending' => 'В ожидании',
-                        'confirmed' => 'Подтверждена',
-                        'cancelled' => 'Отменена',
-                    ])
+                    ->options(BookingStatus::options())
                     ->required(),
             ]);
     }
@@ -86,12 +83,15 @@ class BookingResource extends Resource
 
                 Tables\Columns\TextColumn::make('status')
                     ->label('Статус')
-                    ->colors([
-                        'warning' => 'pending',
-                        'success' => 'confirmed',
-                        'danger' => 'cancelled',
-                    ])
                     ->badge()
+                    ->color(fn (BookingStatus $state): string => match ($state) {
+                        BookingStatus::Pending => 'warning',
+                        BookingStatus::Confirmed => 'info',
+                        BookingStatus::Paid => 'success',
+                        BookingStatus::Cancelled => 'danger',
+                        default => 'secondary',
+                    })
+                    ->formatStateUsing(fn (BookingStatus $state) => $state->label())
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('created_at')
