@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Enums\UserRole;
 use App\Filament\Resources\ExcursionResource\Pages;
-use App\Filament\Resources\ExcursionResource\RelationManagers;
 use App\Models\Excursion;
 use Filament\Forms;
 use Filament\Forms\Form;
